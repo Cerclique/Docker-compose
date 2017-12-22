@@ -1,0 +1,32 @@
+{
+  "name": "trucks-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "trucks-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "dotenv": "^4.0.0",
+    "express": "*",
+    "google-distance": "^1.0.1",
+    "json-api": "*",
+    "mongoose": "*"
+  },
+  "xo": {
+    "envs": [
+      "node"
+    ],
+    "space": 2,
+    "rules": {
+      "max-len": [
+        "error",
+        80,
+        2
+      ]
+    }
+  }
+}
