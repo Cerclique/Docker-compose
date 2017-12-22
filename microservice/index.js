@@ -9,13 +9,13 @@ const dbURL = process.env.DB_URL || 'mongodb://127.0.0.1:20017/sub-dev';
 mongoose.connect(dbURL, {useMongoClient: true});
 
 const stocks = [
-    //{city: 'Bordeaux', indice: 'ACA.PA'},
-    //{city: 'Lille', indice: 'FP.PA'},
-    //{city: 'Lyon', indice: 'CS.PA'},
-    //{city: 'Marseille', indice: 'GLE.PA'},
-    //{city: 'Nantes', indice: 'CA.PA'},
+    {city: 'Bordeaux', indice: 'ACA.PA'},
+    {city: 'Lille', indice: 'FP.PA'},
+    {city: 'Lyon', indice: 'CS.PA'},
+    {city: 'Marseille', indice: 'GLE.PA'},
+    {city: 'Nantes', indice: 'CA.PA'},
     {city: 'Paris', indice: 'BNP.PA'},
-    //{city: 'Toulouse', indice:'UG.PA'}
+    {city: 'Toulouse', indice:'UG.PA'}
 ];
 
 const getValue = async symbol => {
