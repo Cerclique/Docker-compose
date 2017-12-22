@@ -3,10 +3,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const citySchema = new Schema({
-  name: {type: String, required: true},
-  lat: {type: Number, required: true},
-  lng: {type: Number, required: true},
-  resources: {type: Number, default: 0}
+    name: {type: String, required: true},
+    lat: Number,
+    lon: Number,
+    resources: {type: Number, default: 0},
+    previousValues : {
+        type: [Number],
+        validate: [maxMemory, '{PATH} exceeds the limit of 10']
+    }
 });
 
 module.exports = {
