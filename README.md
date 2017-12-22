@@ -1,4 +1,4 @@
-# Genetic Algorithm - [link](./algoGen.js)
+# Genetic Algorithm - [link](./json-api/algoGen.js)
 ## **Overview**
 
 This algorithm generates a path from *depCity* to *arrCity* by maximizing the resources harvested. Here is the prototype :
