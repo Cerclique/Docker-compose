@@ -2,15 +2,13 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const citySchema = new Schema({
+
+const citySchema = new Schema ({
     name: {type: String, required: true},
     lat: Number,
     lon: Number,
     resources: {type: Number, default: 0},
-    previousValues : {
-        type: [Number],
-        validate: [maxMemory, '{PATH} exceeds the limit of 10']
-    }
+    previousValues: [{type: Number, ref: 'resources'}]
 });
 
 module.exports = {

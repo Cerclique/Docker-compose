@@ -1,12 +1,18 @@
 const app = require('express')();
 const API = require('json-api');
+
 const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+
 const { algoGen, getDistances, setDistances } = require('./algoGen');
 const { computeDistance, distanceCity } = require('./distance');
+
+const { initializeArray } = require('./app/controllers/initializeArray');
 
 require('dotenv').config();
 
 const APIError = API.types.Error;
+
 mongoose.connect(process.env.DB_URL, { useMongoClient: true });
 
 const models = {
@@ -49,13 +55,18 @@ app.options('*', (req, res) => {
 
 app.get('/api', front.docsRequest.bind(front));
 
+app.get('/tortue', async (req, res) => {
+  const a = await initializeArray();
+  console.log(a);
+  res.json(a);
+});
 
 app.get('/algogen', (req, res) => {
   const start = req.query.start;
   const end = req.query.end;
   console.log(getDistances());
   const path = algoGen(start, end);
-  
+
   res.json(path);
 });
 
