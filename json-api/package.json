@@ -12,6 +12,7 @@
     "bluebird": "^3.5.1",
     "dotenv": "^4.0.0",
     "express": "*",
+    "geolib": "^2.0.24",
     "google-distance": "^1.0.1",
     "json-api": "*",
     "mongoose": "*"

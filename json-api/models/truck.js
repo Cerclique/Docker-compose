@@ -4,8 +4,9 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
 const truckSchema = new Schema({
+  name: {type: String, required: true},
   lat: {type: Number, required: true},
-  lng: {type: Number, required: true},
+  lon: {type: Number, required: true},
   path: [{type: ObjectId, ref: 'City'}]
 });
 

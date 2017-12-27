@@ -8,6 +8,7 @@ const { algoGen, getDistances, setDistances } = require('./algoGen');
 const { computeDistance, distanceCity } = require('./distance');
 
 const { initializeArray } = require('./app/controllers/initializeArray');
+const { startCity } = require('./app/controllers/startCity');
 
 require('dotenv').config();
 
@@ -60,6 +61,12 @@ app.get('/tortue', async (req, res) => {
   console.log(a);
   res.json(a);
 });
+
+app.get('/kiwi', async (req, res) => {
+  const a = await startCity();
+  res.json(a);
+});
+
 
 app.get('/algogen', (req, res) => {
   const start = req.query.start;
