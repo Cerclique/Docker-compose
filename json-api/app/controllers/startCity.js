@@ -46,7 +46,7 @@ const startCity = async () => {
     const cityName = await cityIndex.map(element => {
         return cityList[element.index].name;
     });
-    
+
     return truckList.map((truck, index) => {
         return {Name: truck.name, City: cityName[index]};
     });

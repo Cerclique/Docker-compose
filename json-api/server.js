@@ -9,6 +9,7 @@ const { computeDistance, distanceCity } = require('./distance');
 
 const { initializeArray } = require('./app/controllers/initializeArray');
 const { startCity } = require('./app/controllers/startCity');
+const { fillDatabase } = require('./app/controllers/fillDatabase');
 
 require('dotenv').config();
 
@@ -103,6 +104,9 @@ app.use((req, res) => {
 });
 
 app.listen(process.env.PORT, async () => {
+  console.log('FILLING DATABASE');
+  await fillDatabase();
+  console.log('DATABASE FILLED');
   await computeDistance();
   setDistances();
   console.log(`Server listening on : ${process.env.BASE_URL}`);
