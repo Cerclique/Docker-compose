@@ -22,8 +22,10 @@ const getCityList = () => {
 const computeNearest = async (truck, cityList) => {
     const formattedTruck = await formatTruck(truck);
     const result = await Geolib.orderByDistance(formattedTruck, cityList);
-    return {index: Number(result[0].key),
-            distance: Number(result[0].distance)};
+    return {
+        index: Number(result[0].key),
+        distance: Number(result[0].distance)
+    };
 };
 
 const formatCitylist = (city) => {
@@ -34,22 +36,27 @@ const formatTruck = (truck) => {
     return {latitude: truck.lat, longitude: truck.lon};
 };
 
-const associate = (element, cityList) => {
-    return cityList[element.index].name;
-};
-
 const startCity = async () => {
     const truckList = getTruckList();
     const cityList = await getCityList();
     const formattedCityList = await cityList.map(city => formatCitylist(city));
     const cityIndex = await truckList.map(truck => computeNearest(truck, formattedCityList));
     const cityName = await cityIndex.map(element => {
-        return cityList[element.index].name;
+        return {
+            name: cityList[element.index].name,
+            lat: cityList[element.index].lat,
+            lon: cityList[element.index].lon
+        };
     });
 
     return truckList.map((truck, index) => {
-        return {Name: truck.name, City: cityName[index]};
+        return {
+            Name: truck.name,
+            City: cityName[index].name,
+            Latitude: cityName[index].lat,
+            Longitude: cityName[index].lon
+        };
     });
 };
 
-module.exports = { startCity };
+module.exports = {startCity};
