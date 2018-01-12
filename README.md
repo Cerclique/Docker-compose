@@ -1,3 +1,36 @@
+# Docker-compose
+
+Our docker composed of 3 services :
+* **db** : MongoDB used to store our data
+* **finance** : Microservice that retrieve value from yahoo-finance API. We use these data as resources for each city
+* **api** : Our server built using Express and json-api.
+
+## Build and run 
+First, you need to have `docker` and `docker-compose` installed on your machine.
+
+After cloning the repository, simply run :
+
+* `docker-compose up`
+
+When all services are launched, the database will start stocking data providing by our microservice API.
+
+You can access to the database using any adapted software (Robo 3T, Studio 3T) at this adress : `localhost:27027`.
+
+Our API is available at `localhost:1337/api`. From this adress, you can also access to our GeneticAlgorithm API following this prototype : 
+* `http://localhost:1337/algogen?start=[city]&end=[city]`
+
+You can use any city from this list for start and end values.
+
+* `Bordeaux`
+* `Lille`
+* `Lyon`
+* `Marseille`
+* `Nantes`
+* `Paris`
+* `Toulouse`
+
+Here are more inforamation about the algorithm itself.
+
 # Genetic Algorithm - [link](./json-api/algoGen.js)
 ## **Overview**
 
@@ -44,3 +77,9 @@ The object returned is composed of :
 * the distance traveled
 * the number of iteration
 * the final error
+
+# Credits
+
+* `Thierry Gonard :` https://github.com/tuxnut
+* `Thomas Le Flohic :` https://github.com/QuarkyUp
+* `Aurélien Vernizeau :` https://github.com/Cerclique
